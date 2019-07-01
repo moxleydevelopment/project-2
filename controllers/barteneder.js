@@ -16,8 +16,24 @@ BartenderRouter.get('/', (req, res) => {
   })
 
   BartenderRouter.get('/new', (req , res) =>{
-    res.render()
+    res.render('bartender/newBartender')
   })
+
+
+  BartenderRouter.get('/:userName', (req , res) =>{
+    BartenderApi.getBartender(req.params.userName)
+    .then((bartender)=>{
+      
+    })
+  })
+
+
+ BartenderRouter.post('/' , (req , res) =>{
+   BartenderApi.addNewBartender(req.body)
+   .then(() =>{
+     res.redirect('/login/')
+   })
+ })
 
 
 
