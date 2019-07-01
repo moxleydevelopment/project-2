@@ -19,11 +19,18 @@ BartenderRouter.get('/', (req, res) => {
     res.render('bartender/newBartender')
   })
 
+  BartenderRouter.get('/:userName/edit' , (req, res) =>{
+    BartenderApi.getBartender(req.params.userName) 
+    .then((bartender) =>{
+      res.render('editBartenderForm' ,{bartender})
+    })
+  })
+
 
   BartenderRouter.get('/:userName', (req , res) =>{
     BartenderApi.getBartender(req.params.userName)
     .then((bartender)=>{
-      
+      res.render('bartender/bartender', {bartender})
     })
   })
 
