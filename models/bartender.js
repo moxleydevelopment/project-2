@@ -53,7 +53,9 @@ function updateBartender(userName, bartenderObject){
 }
 
 
-
+function deleteBartender(userName){
+  return BartenderCollection.findOneAndDelete(userName)
+}
 
 
 
@@ -61,5 +63,8 @@ function updateBartender(userName, bartenderObject){
 
 module.exports = {
   getAllBartenders,
-  getBartender
+  getBartender,
+  addNewBartender,
+  updateBartender,
+  deleteBartender
 }
