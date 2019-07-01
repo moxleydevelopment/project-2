@@ -20,23 +20,23 @@ function getComment(){
 }
 
 function getComments(){
-  return UserCollection.find()
+  return CommentCollection.find()
 }
 
 
 
 
 function addComment(userObject){
-  return UserCollection.create(userObject)
+  return CommentCollection.create(userObject)
 }
 
 
 function updateComment(userName, userObject){
-  return  UserCollection.findOneAndUpdate(userName, userObject)
+  return  CommentCollection.findOneAndUpdate(userName, userObject)
 }
 
 function deleteComment(userId){
-  return UserCollection.findByIdAndDelete(userId)
+  return CommentCollection.findByIdAndDelete(userId)
 }
 module.exports = {
   getComment,

@@ -36,7 +36,7 @@ function updateEvent(userName, userObject){
 }
 
 function deleteEvent(userId){
-  return EventCollection.findByIdAndDelete(userId)
+  return EventeCollection.findByIdAndDelete(userId)
 }
 
 
