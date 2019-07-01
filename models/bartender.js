@@ -36,7 +36,7 @@ const BartenderCollection = mongoose.model('Bartender', BartenderSchema)
 
 
 function getBartender(userName){
-  return BartenderCollection.findOne(userName)
+  return BartenderCollection.findOne({"userName": userName})
 }
 
 function getAllBartenders(){
@@ -47,8 +47,8 @@ function addNewBartender(bartenderObject){
   return BartenderCollection.create(bartenderObject)
 }
 
-function updateBartender(userName, bartenderObject){
-  return BartenderCollection.findOneAndUpdate(userName , bartenderObject)
+function updateBartender(bartenderId, bartenderObject){
+  return BartenderCollection.findByIdAndUpdate(bartenderId, bartenderObject)
 }
 
 
