@@ -21,11 +21,20 @@ UserProfileRouter.get('/new', (req,res)=>{
   res.render('user/newUser')
 })
 
+
+UserProfileRouter.get('/:userName/edit', (req, res) =>{
+  UserProfileApi.getUser(req.params.userName)
+  .then((user) =>{
+     res.render('user/editUserForm' , {user})
+  })
+ 
+})
+
+
 UserProfileRouter.get('/:userName', (req, res) => {
    UserProfileApi.getUser(req.params.userName)
    
    .then((user) =>{
-     console.log(req.params)
      res.render('user/user' , {user})
    })
 })
@@ -39,9 +48,16 @@ UserProfileRouter.post('/', (req, res) =>{
   })
 })
 
-UserProfileRouter.put('/:userId/edit', (req, res) =>{
-  res.send(UserProfileApi.updateUser(req.params.userId))
+
+UserProfileRouter.put('/:userName', (req, res) =>{
+  UserProfileApi.updateUser(req.params.userName , req.body)
+  .then(UserProfileApi.getUser(req.params.userName))
+  .then((user) => {
+    res.render('user/user' , {user})
+  })
 })
+
+
 
 UserProfileRouter.delete('/:userId', (req, res) =>{
   res.send(UserProfileApi.deleteUser(req.params.userId))

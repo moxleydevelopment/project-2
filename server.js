@@ -7,6 +7,7 @@ const methodOverride = require('method-override')
 
 const {LoginRouter} = require('./controllers/login.js')
 const { UserProfileRouter } = require('./controllers/userProfile.js')
+const { BartenderRouter} = require('./controllers/barteneder')
 
 
 
@@ -33,6 +34,7 @@ app.set('view engine', 'hbs')
 
 app.use('/login', LoginRouter)
 app.use('/user', UserProfileRouter)
+app.use('/bartender', BartenderRouter)
 
 
 

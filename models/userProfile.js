@@ -52,12 +52,12 @@ function addUser(userObject){
 }
 
 
-function updateUser(userId){
-  return  `the user ${userId} was updated` /*UserCollection.findByIdAndUpdate(userId)*/
+function updateUser(userName, userObject){
+  return  UserCollection.findOneAndUpdate(userName, userObject)
 }
 
 function deleteUser(userId){
-  return `user ${userId} was deleted` /* UserCollection.findByIdAndDelete(userId)*/
+  return UserCollection.findByIdAndDelete(userId)
 }
 
 

@@ -1,0 +1,65 @@
+const mongoose = require('./connection.js')
+
+
+
+const BartenderSchema = new mongoose.Schema({
+      
+     userName :{
+       type: String,
+       required: true
+     },
+
+     passWord: {
+       type: String,
+       required: true
+     },
+
+     firstName :{
+       type: String,
+       required: true
+     },
+
+     lastName : {
+       type: String ,
+       required: true
+     },
+
+     rating : {
+       type: Number,
+       required : true,
+       min : 1,
+       max : 5,
+       default: 5
+     }
+})
+
+const BartenderCollection = mongoose.model('Bartender', BartenderSchema)
+
+
+function getBartender(userName){
+  return BartenderCollection.findOne(userName)
+}
+
+function getAllBartenders(){
+  return BartenderCollection.find()
+}
+
+function addNewBartender(bartenderObject){
+  return BartenderCollection.create(bartenderObject)
+}
+
+function updateBartender(userName, bartenderObject){
+  return BartenderCollection.findOneAndUpdate(userName , bartenderObject)
+}
+
+
+
+
+
+
+
+
+module.exports = {
+  getAllBartenders,
+  getBartender
+}

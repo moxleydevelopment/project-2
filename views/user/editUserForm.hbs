@@ -1,0 +1,10 @@
+<form method="POST" action="/user/{{user._id}}?_method=PUT">
+
+ 
+ <input type="text" name="userName" id="userName" value="{{user.userName}}">
+<input type="password" name="passWord" id="passWord" value="{{user.passWord}}">
+<input type="text" name="firstName" id="firstName" value="{{user.firstName}}">
+<input type="text" name="lastName" id="lastName" value="{{user.lastName}}">
+<input type="text" name="dateOfBirth" id="dateOfBirth" value="{{user.dateOfBirth}}">
+<input type="submit" value="UPDATE">
+</form>
