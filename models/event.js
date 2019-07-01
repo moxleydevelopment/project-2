@@ -14,29 +14,29 @@ const EventCollection = mongoose.model('Event', EventSchema)
 
 
 function getEvent(){
-  return CommentsCollection.findOne(
+  return EventCollection.findOne(
     {"userName": user}
   ) 
 }
 
 function getEvents(){
-  return UserCollection.find()
+  return EventCollection.find()
 }
 
 
 
 
 function addEvent(userObject){
-  return UserCollection.create(userObject)
+  return EventCollection.create(userObject)
 }
 
 
 function updateEvent(userName, userObject){
-  return  UserCollection.findOneAndUpdate(userName, userObject)
+  return  EventCollection.findOneAndUpdate(userName, userObject)
 }
 
 function deleteEvent(userId){
-  return UserCollection.findByIdAndDelete(userId)
+  return EventCollection.findByIdAndDelete(userId)
 }
 
 
