@@ -11,56 +11,58 @@ const UserProfileRouter = express.Router()
 
 
 
-UserProfileRouter.get('/' ,(req, res) => {
+UserProfileRouter.get('/', (req, res) => {
   UserProfileApi.getAllUsers()
-  .then( (users) => {
-    res.send(users)
-  })
+    .then((users) => {
+      res.send(users)
+    })
 })
 
-UserProfileRouter.get('/new', (req,res)=>{
+UserProfileRouter.get('/new', (req, res) => {
   res.render('user/newUser')
 })
 
 
-UserProfileRouter.get('/:userName/edit', (req, res) =>{
+UserProfileRouter.get('/:userName/edit', (req, res) => {
   UserProfileApi.getUser(req.params.userName)
-  .then((user) =>{
-     res.render('user/editUserForm' , {user})
-  })
- 
+    .then((user) => {
+      res.render('user/editUserForm', { user })
+    })
+
 })
 
-UserProfileRouter.get('/:userId/bartender/:barUserId', (req , res) =>{
+UserProfileRouter.get('/:userId/bartender/:barUserId', (req, res) => {
   let userId = req.params.userId
   let barId = req.params.barUserId
-  
+
   UserProfileApi.getUserById(userId)
-  .then((u) => {user = u})
+    .then((u) => { user = u })
   BartenderApi.getBartenderById(barId)
-  .then((b) =>{bartender = b
-  
-  })
+    .then((b) => {
+      bartender = b
+
+    })
   CommentApi.getCommentsById(barId)
-  .then((c) =>{ comments = c
-    console.log(comments)
-  console.log( user)
-  console.log(bartender )
-  res.render('user/selectBartender', {user , bartender, comments})
-  })
-  })
+    .then((c) => {
+      comments = c
+      console.log(comments)
+      console.log(user)
+      console.log(bartender)
+      res.render('user/selectBartender', { user, bartender, comments })
+    })
+})
 
 
 UserProfileRouter.get('/:userName', (req, res) => {
 
-    UserProfileApi.getUser(req.params.userName)
-    .then((user)=> { 
+  UserProfileApi.getUser(req.params.userName)
+    .then((user) => {
       console.log(user)
 
 
-       BartenderApi.getAllBartenders()
+      BartenderApi.getAllBartenders()
         .then(bartenders => {
-          
+
           const viewData = bartenders.map((bartender) => {
 
             return {
@@ -69,7 +71,7 @@ UserProfileRouter.get('/:userName', (req, res) => {
             }
           })
           console.log(viewData)
-          res.render('user/user' , {bartenders: viewData, user})
+          res.render('user/user', { bartenders: viewData, user })
         })
         .catch((err) => {
           console.log('ran into error rendering bartenders')
@@ -79,30 +81,30 @@ UserProfileRouter.get('/:userName', (req, res) => {
 
 
     }).catch(res.send)
-   
+
 })
 
 
 
-UserProfileRouter.post('/', (req, res) =>{
+UserProfileRouter.post('/', (req, res) => {
   UserProfileApi.addUser(req.body)
-  .then(() =>{
-    res.redirect('/login/')
-  })
+    .then(() => {
+      res.redirect('/login/')
+    })
 })
 
 
-UserProfileRouter.put('/:userName', (req, res) =>{
-  UserProfileApi.updateUser(req.params.userName , req.body)
-  .then(UserProfileApi.getUser(req.params.userName))
-  .then((user) => {
-    res.render('user/user' , {user})
-  })
+UserProfileRouter.put('/:userName', (req, res) => {
+  UserProfileApi.updateUser(req.params.userName, req.body)
+    .then(UserProfileApi.getUser(req.params.userName))
+    .then((user) => {
+      res.render('user/user', { user })
+    })
 })
 
 
 
-UserProfileRouter.delete('/:userId', (req, res) =>{
+UserProfileRouter.delete('/:userId', (req, res) => {
   res.send(UserProfileApi.deleteUser(req.params.userId))
 })
 
