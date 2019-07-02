@@ -3,6 +3,7 @@ const express = require('express')
 
 
 const BartenderApi = require('../models/bartender.js')
+const CommentApi = require('../models/comments.js')
 
 
 const BartenderRouter = express.Router()
@@ -29,10 +30,20 @@ BartenderRouter.get('/', (req, res) => {
 
   BartenderRouter.get('/:userName', (req , res) =>{
     BartenderApi.getBartender(req.params.userName)
-    .then((bartender)=>{
+    .then((b)=>{
+      bartender = b;
       console.log(bartender)
-      res.render('bartender/bartender', {bartender})
+      CommentApi.getCommentsById(bartender._id)
+    .then((c) =>{
+      comments = c
+      
+      console.log(comments)
+      res.render('bartender/bartender', {bartender, comments})
     })
+    })
+    
+    
+    
   })
 
 
