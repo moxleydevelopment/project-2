@@ -30,21 +30,47 @@ UserProfileRouter.get('/:userName/edit', (req, res) =>{
  
 })
 
+UserProfileRouter.get('/:userName/bartender/:barUser', (req , res) =>{
+  let user 
+  UserProfileApi.getUser(req.params.userName)
+  .then((u) =>{
+    console.log(u)
+    user = u
+  })
+
+  .then(BartenderApi.getBartender(req.params.barUser))
+  .then(bartender => {
+    console.log(bartender)
+    res.render('user/selectBartender' , {user, bartender})
+  })
+
+})
+
 
 UserProfileRouter.get('/:userName', (req, res) => {
-  let user
+
     UserProfileApi.getUser(req.params.userName)
-    .then((u)=> { 
-      console.log( u)
-       user = u
-    }) 
-   
-   .then(BartenderApi.getAllBartenders()
-   .then(bartenders =>{
-     console.log(bartenders)
-     res.render('user/user' , {user, bartenders})
-   })
-   )
+    .then((user)=> { 
+      console.log(user)
+
+
+       BartenderApi.getAllBartenders()
+        .then(bartenders => {
+          console.log(bartenders)
+          console.log(user)
+          const viewData = bartenders.map((bartender) => {
+
+            return {
+              userId: user._id,
+              ...bartender._doc
+            }
+          })
+          console.log(viewData)
+          res.render('user/user' , {bartenders: viewData, user: data})
+        }).catch(res.send)
+
+
+    }).catch(res.send)
    
 })
 
