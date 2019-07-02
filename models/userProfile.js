@@ -40,6 +40,10 @@ function getUser(user){
   ) 
 }
 
+function getUserById(id){
+  return UserCollection.findById(id)
+}
+
 function getAllUsers(){
   return UserCollection.find()
 }
@@ -66,5 +70,6 @@ module.exports = {
  addUser,
  updateUser,
  deleteUser,
- getAllUsers
+ getAllUsers,
+ getUserById
 }

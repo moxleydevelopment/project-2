@@ -39,6 +39,10 @@ function getBartender(userName){
   return BartenderCollection.findOne({"userName": userName})
 }
 
+function getBartenderById(id){
+ return BartenderCollection.findById(id)
+}
+
 function getAllBartenders(){
   return BartenderCollection.find()
 }
@@ -65,5 +69,6 @@ module.exports = {
   getBartender,
   addNewBartender,
   updateBartender,
-  deleteBartender
+  deleteBartender,
+  getBartenderById
 }
