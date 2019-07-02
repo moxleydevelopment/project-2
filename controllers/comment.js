@@ -10,8 +10,8 @@ const CommentApi = require('../models/comments.js')
 const CommentRouter = express.Router()
 
 
-CommentRouter.post('/:userId/', (req, res) => {
- CommentApi.addComment()
+CommentRouter.post('/', (req, res) => {
+   console.log(req.body)
 })
 
 
