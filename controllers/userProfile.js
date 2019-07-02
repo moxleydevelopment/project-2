@@ -3,7 +3,7 @@ const express = require('express')
 
 
 const UserProfileApi = require('../models/userProfile.js')
-
+const BartenderApi = require('../models/bartender.js')
 
 const UserProfileRouter = express.Router()
 
@@ -32,11 +32,20 @@ UserProfileRouter.get('/:userName/edit', (req, res) =>{
 
 
 UserProfileRouter.get('/:userName', (req, res) => {
-   UserProfileApi.getUser(req.params.userName)
+  let user
+    UserProfileApi.getUser(req.params.userName)
+    .then((u)=> { 
+      console.log( u)
+       user = u
+    }) 
    
-   .then((user) =>{
-     res.render('user/user' , {user})
+   .then(BartenderApi.getAllBartenders()
+   .then(bartenders =>{
+     console.log(bartenders)
+     res.render('user/user' , {user, bartenders})
    })
+   )
+   
 })
 
 
