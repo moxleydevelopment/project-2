@@ -56,8 +56,7 @@ UserProfileRouter.get('/:userName', (req, res) => {
 
        BartenderApi.getAllBartenders()
         .then(bartenders => {
-          console.log(bartenders)
-          console.log(user)
+          
           const viewData = bartenders.map((bartender) => {
 
             return {
@@ -66,8 +65,13 @@ UserProfileRouter.get('/:userName', (req, res) => {
             }
           })
           console.log(viewData)
-          res.render('user/user' , {bartenders: viewData, user: data})
-        }).catch(res.send)
+          res.render('user/user' , {bartenders: viewData, user})
+        })
+        .catch((err) => {
+          console.log('ran into error rendering bartenders')
+          console.log(err)
+          res.send(err)
+        });
 
 
     }).catch(res.send)
