@@ -5,10 +5,16 @@
 
 
 <form action="/comment" method="post">
-<input type="hidden" name="auther" value="{{user.userName}}">  
-<input type="hidden" name="autherId" value="{{user._id}}"> 
+<input type="hidden" name="author" value="{{user.userName}}">  
+<input type="hidden" name="authorId" value="{{user._id}}"> 
 <input type="hidden" name="bartenderId" value="{{bartender._id}}">
 <input type="number" name="ratind" id="rating">
 <textarea name="description" id="description" cols="30" rows="10"></textarea>
 <input type="submit" value="SUBMIT">
 </form>
+
+
+{{#each comments}}
+{{userName}}
+{{description}}
+{{/each}}

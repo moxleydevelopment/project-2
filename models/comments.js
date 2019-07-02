@@ -16,33 +16,33 @@ const CommentsCollection = mongoose.model('Comments', CommentSchema)
 
 
 
-function getComment(){
-  return CommentsCollection.findOne(
-    {"userName": user}
+function getCommentsById(barId){
+  return CommentsCollection.find(
+    {"bartenderId": barId}
   ) 
 }
 
 function getComments(){
-  return CommentCollection.find()
+  return CommentsCollection.find()
 }
 
 
 
 
 function addComment(userObject){
-  return CommentCollection.create(userObject)
+  return CommentsCollection.create(userObject)
 }
 
 
 function updateComment(userName, userObject){
-  return  CommentCollection.findOneAndUpdate(userName, userObject)
+  return  CommentsCollection.findOneAndUpdate(userName, userObject)
 }
 
 function deleteComment(userId){
-  return CommentCollection.findByIdAndDelete(userId)
+  return CommentsCollection.findByIdAndDelete(userId)
 }
 module.exports = {
-  getComment,
+  getCommentsById,
   getComments,
   addComment,
   updateComment,
