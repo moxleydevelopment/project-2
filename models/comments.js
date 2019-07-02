@@ -4,7 +4,10 @@ const mongoose = require('./connection.js')
 
 const CommentSchema = new mongoose.Schema({
   author: String,
+  authorId: String,
+  bartenderId: String,
   rating: Number,
+
   description: String
 })
 

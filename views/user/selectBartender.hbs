@@ -2,3 +2,13 @@
 
 
 <p>{{bartender.firstName}} is your selected bartender</p>
+
+
+<form action="" method="post">
+<input type="hidden" name="auther" value="{{user.userName}}">  
+<input type="hidden" name="autherId" value="{{user._id}}"> 
+<input type="hidden" name="bartenderId" value="{{bartender._id}}">
+<input type="number" name="ratind" id="rating">
+<textarea name="description" id="description" cols="30" rows="10"></textarea>
+<input type="submit" value="SUBMIT">
+</form>
