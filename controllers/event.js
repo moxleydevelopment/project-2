@@ -1,39 +1,29 @@
-/* Step 1 import express
- *
- */
+
 const express = require('express')
 
 
-const templateApi = require('../models/event.js')
+const EventApi = require('../models/event.js')
 
-/* Step 3 
- * 
- * Create a new router.
- *
- * the router will "contain" all the request handlers that you define in this file.
- * TODO: rename this from templateRouter to something that makes sense. (e.g:
- * `shopRouter`)
- */
-const templateRouter = express.Router()
 
-/* Step 4
- * 
- * TODO: Put all request handlers here
- */
+const EventRouter = express.Router()
 
-/* Step 5
- *
- * TODO: delete this handler; it's just a sample
- */ 
-templateRouter.get('/', (req, res) => {
-  res.send(templateApi.getHelloWorldString())
+ 
+EventRouter.get('/', (req, res) => {
+  EventApi.getEvents()
+  .then((e) =>{
+    res.send(e)
+  })
+  
+  
 })
 
-/* Step 6
- *
- * Export the router from the file.
- *
- */
+
+EventRouter.post('/' , (req , res) =>{
+  EventApi.addEvent(req.body)
+  .then((e) =>{
+    res.send(e)
+  })
+})
 module.exports = {
-  templateRouter
+  EventRouter
 }

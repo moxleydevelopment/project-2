@@ -9,6 +9,7 @@ const {LoginRouter} = require('./controllers/login.js')
 const { UserProfileRouter } = require('./controllers/userProfile.js')
 const { BartenderRouter} = require('./controllers/barteneder')
 const {CommentRouter} = require('./controllers/comment.js')
+const {EventRouter} = require('./controllers/event.js')
 
 
 
@@ -37,6 +38,7 @@ app.use('/login', LoginRouter)
 app.use('/user', UserProfileRouter)
 app.use('/bartender', BartenderRouter)
 app.use('/comment' , CommentRouter)
+app.use('/event', EventRouter)
 
 
 

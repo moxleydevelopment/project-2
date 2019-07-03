@@ -2,6 +2,8 @@ const mongoose = require('./connection.js')
 
 
 const EventSchema = new mongoose.Schema({
+  userId: String,
+  barUserId: String,
   hostName: String,
   eventName: String,
   date: String,
