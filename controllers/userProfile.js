@@ -12,10 +12,7 @@ const UserProfileRouter = express.Router()
 
 
 UserProfileRouter.get('/', (req, res) => {
-  UserProfileApi.getAllUsers()
-    .then((users) => {
-      res.send(users)
-    })
+  res.render('login/loginUser')
 })
 
 UserProfileRouter.get('/new', (req, res) => {
@@ -60,8 +57,8 @@ UserProfileRouter.get('/:userId/bartender/:barUserId', (req, res) => {
 UserProfileRouter.get('/:userName', (req, res) => {
 
   UserProfileApi.getUser(req.params.userName)
-    .then((user) => {
-      console.log(user)
+    .then((userObject) => {
+      console.log(userObject)
 
 
       BartenderApi.getAllBartenders()
@@ -70,12 +67,12 @@ UserProfileRouter.get('/:userName', (req, res) => {
           const viewData = bartenders.map((bartender) => {
 
             return {
-              userId: user._id,
+              userId: userObject._id,
               ...bartender._doc
             }
           })
           console.log(viewData)
-          res.render('user/user', { bartenders: viewData, user })
+          res.render('user/user', { bartenders: viewData, userObject })
         })
         .catch((err) => {
           console.log('ran into error rendering bartenders')
@@ -96,6 +93,9 @@ UserProfileRouter.post('/', (req, res) => {
       res.redirect('/login/')
     })
 })
+
+
+
 
 
 UserProfileRouter.put('/:userName', (req, res) => {
