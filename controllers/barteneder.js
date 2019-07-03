@@ -4,6 +4,7 @@ const express = require('express')
 
 const BartenderApi = require('../models/bartender.js')
 const CommentApi = require('../models/comments.js')
+const EventApi = require('../models/event.js')
 
 
 const BartenderRouter = express.Router()
@@ -30,18 +31,14 @@ BartenderRouter.get('/:userName/edit', (req, res) => {
 
 BartenderRouter.get('/:userName', (req, res) => {
   BartenderApi.getBartender(req.params.userName)
-    .then((b) => {
-      bartender = b;
-      CommentApi.getCommentsById(bartender._id)
-        .then((c) => {
-          comments = c
-
-          res.render('bartender/bartender', { bartender, comments })
-        })
+    .then((b) => {bartender = b})
+  CommentApi.getCommentsById(bartender._id)
+    .then((c) => {comments = c})
+  EventApi.getEventsById(bartender._Id)
+    .then((ev) => {
+      events = ev
+      res.render('bartender/bartender', { bartender, comments, events })
     })
-
-
-
 })
 
 
