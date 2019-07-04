@@ -7,7 +7,7 @@ body {
 }
 /* changs the color of the hero background */
 .hero-color {
-    background-color: rgba(197, 190, 202, .9);
+    background-color: rgb(167, 144, 184);
     
 }
 
@@ -15,5 +15,14 @@ body {
 .center-login {
     
     grid-row: 3 /span 2;
+ }
+
+ .btn-color {
+     background-color: rgb(167, 144, 184)
+ }
+
+ .btn-color:hover {
+     background-color: rgb(145, 42, 218);
+     color: white;
  }
 
