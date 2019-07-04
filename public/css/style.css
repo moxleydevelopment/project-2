@@ -1,0 +1,19 @@
+body {
+    display: grid;
+    grid-template-rows:  repeat(5, 1fr);
+    background-image: url('/images/loginBack.jpg')
+    
+
+}
+/* changs the color of the hero background */
+.hero-color {
+    background-color: rgba(197, 190, 202, .9);
+    
+}
+
+/* centers the login in page*/
+.center-login {
+    
+    grid-row: 3 /span 2;
+ }
+

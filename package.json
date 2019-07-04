@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "bulma": "^0.7.5",
+    "bulma-start": "0.0.3",
     "express": "^4.17.1",
     "hbs": "^4.0.4",
     "method-override": "^3.0.0",
