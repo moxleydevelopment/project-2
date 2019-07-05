@@ -56,8 +56,8 @@ function addUser(userObject) {
 }
 
 
-function updateUser(userName, userObject) {
-  return UserCollection.findOneAndUpdate(userName, userObject)
+function updateUser(userId, userObject) {
+  return UserCollection.findByIdAndUpdate(userId, userObject)
 }
 
 function deleteUser(userId) {

@@ -20,9 +20,11 @@ UserProfileRouter.get('/new', (req, res) => {
 })
 
 
-UserProfileRouter.get('/:userName/edit', (req, res) => {
-  UserProfileApi.getUser(req.params.userName)
+UserProfileRouter.get('/:userId/edit', (req, res) => {
+  
+  UserProfileApi.getUserById(req.params.userId)
     .then((user) => {
+      
       res.render('user/editUserForm', { user })
     })
 
@@ -98,11 +100,24 @@ UserProfileRouter.post('/', (req, res) => {
 
 
 
-UserProfileRouter.put('/:userName', (req, res) => {
-  UserProfileApi.updateUser(req.params.userName, req.body)
-    .then(UserProfileApi.getUser(req.params.userName))
-    .then((user) => {
-      res.render('user/user', { user })
+UserProfileRouter.put('/:userId', (req, res) => {
+  UserProfileApi.updateUser(req.params.userId, req.body)
+    .then(UserProfileApi.getUserById(req.params.userId))
+    .then((userObject) => {
+      
+      BartenderApi.getAllBartenders()
+        .then(bartenders => {
+
+          const viewData = bartenders.map((bartender) => {
+
+            return {
+              userId: userObject._id,
+              ...bartender._doc
+            }
+          })
+          console.log(viewData)
+          res.render('user/user', { bartenders: viewData, userObject })
+        })
     })
 })
 
