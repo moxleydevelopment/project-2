@@ -124,7 +124,8 @@ UserProfileRouter.put('/:userId', (req, res) => {
 
 
 UserProfileRouter.delete('/:userId', (req, res) => {
-  res.send(UserProfileApi.deleteUser(req.params.userId))
+  UserProfileApi.deleteUser(req.params.userId)
+  .then(res.render('/login/'))
 })
 
 module.exports = {

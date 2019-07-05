@@ -8,6 +8,7 @@
 .login-container{
     display: grid;
     grid-template-rows:  repeat(8, 1fr);
+    grid-template-columns: repeat(5 , 1fr);
     background-image: url('/images/loginBack.jpg')
 }
 
@@ -15,6 +16,7 @@
 .center-login {
     
     grid-row: 3 /span 2;
+    grid-column: 3 / span 1;
  }
 
  .btn-color {
@@ -31,6 +33,11 @@
     grid-template-rows:  repeat(8, 1fr);
     grid-template-columns: repeat(5 , 1fr);
 
+ }
+
+ .new-user {
+     grid-column: 5 /span 1 ;
+     grid-row: 1 / span 1 ;
  }
 
  /* styling for the user display page*/
@@ -77,5 +84,27 @@
    grid-column: 3 / span 2;
    grid-row: 2 / span 5;
    overflow: scroll;
+ }
+
+ /* formatting for the edit user page*/
+
+ .edit-form {
+     grid-row: 1 / span 4;
+     grid-column: 2 / span 2;
+     margin-top: 10px;
+     
+ }
+
+ .delete-form {
+     grid-row: 5 / span 1;
+     grid-column: 2 / span 1;
+ }
+
+ .btn-delete {
+     background-color: rgb(230, 77, 108);
+ }
+
+ .btn-delete:hover {
+     background-color: rgb(231, 12, 56);
  }
 
