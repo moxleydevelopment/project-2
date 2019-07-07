@@ -1,31 +1,118 @@
-</h1>{{user.firstName}}</h1>
+<div class="content-container">
+    <h1 class="title sb-title">{{user.firstName}}, {{bartender.firstName}} is your selected bartender </h1>
 
 
-<p>{{bartender.firstName}} is your selected bartender</p>
+    <p class="heading-sub"></p>
 
 
-<form action="/comment" method="post">
-<input type="hidden" name="author" value="{{user.userName}}">  
-<input type="hidden" name="authorId" value="{{user._id}}"> 
-<input type="hidden" name="bartenderId" value="{{bartender._id}}">
-<input type="number" name="ratind" id="rating">
-<textarea name="description" id="description" cols="30" rows="10"></textarea>
-<input type="submit" value="SUBMIT">
-</form>
+    <form class="comment-form" action="/comment" method="post">
+        <div class="field">
+            <label class="label">Rating</label>
+            <div class="control">
+                <input class="input" type="number" name="rating" id="rating">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+                <textarea name="description" id="description" class="textarea" placeholder="Textarea"></textarea>
+            </div>
+        </div>
+        <div class="control">
+            <input class="button btn-color" type="submit" value="SUBMIT">
+        </div>
+        <input type="hidden" name="author" value="{{user.userName}}">
+        <input type="hidden" name="authorId" value="{{user._id}}">
+        <input type="hidden" name="bartenderId" value="{{bartender._id}}">
+    </form>
+
+    <div class="comments">
+        {{#each comments}}
+        <div class="card">
+            <header class="card-header bg-header">
+                <p class="card-header-title">
+                    {{author}}
+                </p>
+            </header>
+            <div class="card-content bg-content">
+                <div class="content">
+                    Rating: {{rating}}
+                    <br>
+                    {{description}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <form class="event-form" action="/event" method="post">
+        <div class="field">
+            <div class="control">
+                <input class="input" name="userId" type="hidden" value="{{user._id}}">
+            </div>
+        </div>
+
+        <div class="field">
+
+            <div class="control">
+                <input class="input" name="barUserId" type="hidden" value="{{bartender._id}}">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="hidden" name="hostName" type="hidden" value="{{user.firstName}} {{user.lastName}}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Event Name</label>
+            <div class="control">
+                <input class="input" name="eventName" type="text" placeholder="e.g. Wedding...">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Date</label>
+            <div class="control">
+                <input class="input" name="date" type="text" placeholder="e.g April 5, 2020">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Time</label>
+            <div class="control">
+                <input class="input" name="time" type="text" placeholder="e.g. 3pm - 7pm">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Location</label>
+            <div class="control">
+                <input class="input" name="location" type="text" placeholder="e.g Ponce City Market">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea class="textarea" name="description" placeholder="Comments...."></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input type="submit" value="SUBMIT" class="button btn-color ">
+            </div>
+        </div>
 
 
-{{#each comments}}
-{{author}}
-{{description}}
-{{/each}}
 
-{{#each events}}
-{{hostName}}
-{{location}}
-{{eventName}}
-{{description}}
-{{/each}}
+    </form>
+
+    <div class="event-list">
+        <p class="event-header">Upcoming Events</p>
+        {{#each events}}
+        <ul class="unorder-event-list">
+            <li class="event-item">{{eventName}} at {{location}} on {{date}}</li>
+        </ul>
+        {{/each}}
+    </div>
 
 
-
-<a href="/views/user/eventform.hbs" class="event-link">New Event</a>
+</div>

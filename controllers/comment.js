@@ -7,6 +7,8 @@ const express = require('express')
 const CommentApi = require('../models/comments.js')
 const UserProfileApi = require('../models/userProfile.js')
 const BartenderApi = require('../models/bartender.js')
+const EventApi = require('../models/event.js')
+
 
 
 const CommentRouter = express.Router()
@@ -22,10 +24,13 @@ CommentRouter.post('/', (req, res) => {
       BartenderApi.getBartenderById(barId)
         .then((b) => { bartender = b })
       CommentApi.getCommentsById(barId)
-        .then((c) => {
-          comments = c
-          res.render('user/selectBartender', { user, bartender, comments })
+        .then((c) => { comments = c })
+      EventApi.getEventByBartender(barId)
+        .then((evt) => {
+          events = evt
+          res.render('user/selectBartender', { user, bartender, comments, events })
         })
+
     })
 
 })

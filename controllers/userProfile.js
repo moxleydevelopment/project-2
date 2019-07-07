@@ -104,6 +104,7 @@ UserProfileRouter.put('/:userId', (req, res) => {
   UserProfileApi.updateUser(req.params.userId, req.body)
     .then(UserProfileApi.getUserById(req.params.userId))
     .then((userObject) => {
+      console.log(userObject)
       
       BartenderApi.getAllBartenders()
         .then(bartenders => {

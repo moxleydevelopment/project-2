@@ -31,6 +31,12 @@ function getEventsById(id){
   )
 }
 
+function getEventByBartender(id){
+  return EventCollection.find(
+    {"barUserId": id}
+  )
+}
+
 
 
 
@@ -54,5 +60,6 @@ module.exports = {
   addEvent,
   updateEvent,
   deleteEvent,
-  getEventsById
+  getEventsById,
+  getEventByBartender
 }

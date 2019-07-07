@@ -20,7 +20,7 @@
  }
 
  .btn-color {
-     background-color: rgb(167, 144, 184)
+     background-color: rgb(167, 144, 184);
  }
 
  .btn-color:hover {
@@ -32,12 +32,19 @@
     display: grid;
     grid-template-rows:  repeat(8, 1fr);
     grid-template-columns: repeat(5 , 1fr);
+    background-color: #eee;
 
  }
 
  .new-user {
      grid-column: 5 /span 1 ;
      grid-row: 1 / span 1 ;
+     margin-top: 10px;
+ }
+
+ .bar-login {
+     grid-column: 5 / span 1;
+     color: red;
  }
 
  /* styling for the user display page*/
@@ -108,3 +115,60 @@
      background-color: rgb(231, 12, 56);
  }
 
+
+ /* This is the styling for selectBartender page*/
+
+.sb-title {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 1;
+}
+
+.heading-sub {
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 1;
+}
+
+.bg-header {
+    background-color: rgb(167, 144, 184);
+}
+
+.bg-content {
+    background-color: #eee;
+}
+
+.comment-form {
+    grid-column: 1/ span 1;
+    grid-row: 4/ span 2;
+
+    background-color: #eee;
+    
+}
+
+.comments {
+    grid-column: 1/ span 1;
+    grid-row: 2 / span 2; 
+    width:  270px;
+    height: 210px;
+    overflow: scroll;
+}
+
+.event-form {
+    grid-column: 3/ span 1;
+    grid-row: 2 / span 4; 
+}
+
+.event-list {
+    grid-column: 4/ span 2;
+    grid-row: 2 / span 4; 
+    
+}
+
+.event-header {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+.event-item {
+    text-align: center;
+}
