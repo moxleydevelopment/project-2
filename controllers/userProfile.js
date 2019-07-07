@@ -57,7 +57,7 @@ UserProfileRouter.get('/:userId/bartender/:barUserId', (req, res) => {
 
 
 UserProfileRouter.get('/:userName', (req, res) => {
-
+  
   UserProfileApi.getUser(req.params.userName)
     .then((userObject) => {
       console.log(userObject)

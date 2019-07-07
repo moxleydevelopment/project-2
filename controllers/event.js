@@ -22,21 +22,13 @@ EventRouter.get('/', (req, res) => {
 
 
 EventRouter.post('/', (req, res) => {
+  console.log(req.body)
   EventApi.addEvent(req.body)
     .then(() => {
-      userId = req.body.authorId
-      barId = req.body.bartenderId
-      UserProfileApi.getUserById(userId)
-        .then((u) => { user = u })
-      BartenderApi.getBartenderById(barId)
-        .then((b) => { bartender = b })
-      CommentApi.getCommentsById(barId)
-        .then((c) => { comments = c })
-      EventApi.getEventByBartender(barId)
-        .then((evt) => {
-          events = evt
-          res.render('user/selectBartender', { user, bartender, comments, events })
-        })
+      userId = req.body.userId
+      barId = req.body.barUserId
+      res.redirect('../user/'+ userId +'/bartender/' + barId)
+        
     })
 })
 module.exports = {
