@@ -11,7 +11,16 @@ into and view events that they are booked for.
 
 ##### Data Models
 
+Each model is interconneted to create an enviroment that allows enteration with all componets 
+is some way. User can view bartenders and all comments about them posted by other users, as well 
+as the events that they will be working to see schedule availibility.
+
 ![Wireframe](https://i.imgur.com/uSv8tP9.png)
+
+
+##### Mock up of how the data will be presented visually 
+
+
 
 
 
