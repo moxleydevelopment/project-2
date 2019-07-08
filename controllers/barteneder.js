@@ -50,7 +50,7 @@ BartenderRouter.get('/:userName', (req, res) => {
 BartenderRouter.post('/', (req, res) => {
   BartenderApi.addNewBartender(req.body)
     .then(() => {
-      res.redirect('/login/loginBar')
+      res.redirect('/login/')
     })
 })
 
