@@ -9,7 +9,7 @@ into and view events that they are booked for.
 
 [Project Work Flow](https://github.com/moxleydevelopment/project-2/projects/1)
 
-##### Data Models
+#### Data Models
 
 Each model is interconneted to create an enviroment that allows enteration with all componets 
 is some way. User can view bartenders and all comments about them posted by other users, as well 
@@ -18,7 +18,21 @@ as the events that they will be working to see schedule availibility.
 ![Wireframe](https://i.imgur.com/uSv8tP9.png)
 
 
-##### Mock up of how the data will be presented visually 
+#### Mock up of how the data will be presented visually 
+
+###### User Login 
+[User login](https://i.imgur.com/vvYEdmG.png)
+
+
+###### User Page 
+[User page](https://i.imgur.com/O56V2oq.png)
+
+
+###### Event Scheduler
+[Events](https://i.imgur.com/pnQnuxv.png)
+
+###### New User
+[New User](https://i.imgur.com/CB7yard.png)
 
 
 
