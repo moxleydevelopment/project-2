@@ -44,15 +44,39 @@ CommentRouter.get('/', (req, res) => {
 })
 
 CommentRouter.get('/:barId', (req, res) => {
-  CommentApi.getCommentsById(req.params.barId)
+  CommentApi.getCommentById(req.params.barId)
     .then((comment) => {
-      console.log(req.params)
-      console.log(comment)
-      res.send(comment)
+      console.log('this is here' + comment)
+      res.render('comments/edit' , {comment})
 
     })
 })
 
+CommentRouter.put('/:id', (req, res) =>{
+  CommentApi.updateComment(req.params.id, req.body)
+  .then((comment) =>{
+    console.log(" this is the comment"+ comment)
+    id = comment.authorId
+    barId = comment.bartenderId
+    console.log(id)
+    
+    res.redirect('../user/'+ id)
+  })
+  
+})
+
+CommentRouter.delete('/:id', (req , res) =>{
+  CommentApi.getCommentById(req.params.id)
+  .then((c) =>{
+    comment = c
+    userId = comment.authorId
+  })
+  CommentApi.deleteComment(req.params.id)
+  .then(()=>{
+    res.redirect('../user/' + userId)
+  })
+
+})
 
 module.exports = {
   CommentRouter

@@ -21,10 +21,10 @@ UserProfileRouter.get('/new', (req, res) => {
 
 
 UserProfileRouter.get('/:userId/edit', (req, res) => {
-  
+
   UserProfileApi.getUserById(req.params.userId)
     .then((user) => {
-      
+
       res.render('user/editUserForm', { user })
     })
 
@@ -51,14 +51,14 @@ UserProfileRouter.get('/:userId/bartender/:barUserId', (req, res) => {
       console.log(user)
       console.log(bartender)
       console.log(events)
-      res.render('user/selectBartender', { user, bartender, comments , events })
+      res.render('user/selectBartender', { user, bartender, comments, events })
     })
 })
 
 
 UserProfileRouter.get('/:userName', (req, res) => {
-  
-  UserProfileApi.getUser(req.params.userName)
+
+  UserProfileApi.getUserById(req.params.userName)
     .then((userObject) => {
       console.log(userObject)
 
@@ -74,7 +74,17 @@ UserProfileRouter.get('/:userName', (req, res) => {
             }
           })
           console.log(viewData)
-          res.render('user/user', { bartenders: viewData, userObject })
+          EventApi.getEventByUserId(userObject._id)
+            .then((evt) => {
+              events = evt
+
+            })
+          CommentApi.getCommentsByUserId(userObject._id)
+            .then((c) => {
+              comments = c
+              res.render('user/user', { bartenders: viewData, userObject, events, comments })
+            })
+
         })
         .catch((err) => {
           console.log('ran into error rendering bartenders')
@@ -105,7 +115,7 @@ UserProfileRouter.put('/:userId', (req, res) => {
     .then(UserProfileApi.getUserById(req.params.userId))
     .then((userObject) => {
       console.log(userObject)
-      
+
       BartenderApi.getAllBartenders()
         .then(bartenders => {
 
@@ -126,7 +136,7 @@ UserProfileRouter.put('/:userId', (req, res) => {
 
 UserProfileRouter.delete('/:userId', (req, res) => {
   UserProfileApi.deleteUser(req.params.userId)
-  .then(res.render('/login/'))
+    .then(res.render('/login/'))
 })
 
 module.exports = {

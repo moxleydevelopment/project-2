@@ -25,7 +25,7 @@ LoginRouter.post('/', (req , res) =>{
       res.send("this is not you")
     }else{
      
-       res.redirect('../user/' + user)
+       res.redirect('../user/' + userObject._id)
     }
     
   })

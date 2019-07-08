@@ -15,11 +15,7 @@ const EventSchema = new mongoose.Schema({
 const EventCollection = mongoose.model('Event', EventSchema)
 
 
-function getEvent() {
-  return EventCollection.findOne(
-    { "userName": user }
-  )
-}
+
 
 function getEvents() {
   return EventCollection.find()
@@ -37,6 +33,11 @@ function getEventByBartender(id){
   )
 }
 
+function getEventByUserId(id){
+return EventCollection.find(
+  {"userId" : id}
+)
+}
 
 
 
@@ -55,11 +56,11 @@ function deleteEvent(userId) {
 
 
 module.exports = {
-  getEvent,
   getEvents,
   addEvent,
   updateEvent,
   deleteEvent,
   getEventsById,
-  getEventByBartender
+  getEventByBartender,
+  getEventByUserId
 }

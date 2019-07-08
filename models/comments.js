@@ -22,8 +22,18 @@ function getCommentsById(barId) {
   )
 }
 
+function getCommentById(id){
+  return CommentsCollection.findById(id)
+}
+
 function getComments() {
   return CommentsCollection.find()
+}
+
+function getCommentsByUserId(id){
+return CommentsCollection.find(
+  {"authorId" : id}
+)
 }
 
 
@@ -46,5 +56,7 @@ module.exports = {
   getComments,
   addComment,
   updateComment,
-  deleteComment
+  deleteComment,
+  getCommentsByUserId,
+  getCommentById
 }

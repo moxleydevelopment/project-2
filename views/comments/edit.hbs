@@ -1,0 +1,24 @@
+<div class="content-container">
+<h1 class="edit-header">{{comment.author}} edit your comment below</h1>
+     <form class="comment-edit-form" action="/comment/{{comment._id}}?_method=PUT" method="POST">
+        <div class="field">
+            <label class="label">Rating</label>
+            <div class="control">
+                <input class="input" type="number" name="rating" id="rating" value="{{comment.rating}}">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+                <textarea name="description" id="description" class="textarea" placeholder="Textarea">{{comment.description}}</textarea>
+            </div>
+        </div>
+        <input type="hidden" name="author" value="{{comment.author}}">
+        <input type="hidden" name="authorId" value="{{comment.authorId}}">
+        <input type="hidden" name="bartenderId" value="{{comment.bartenderId}}">
+        <div class="control">
+            <input class="button btn-color" type="submit" value="UPDATE">
+        </div>
+        
+    </form>
+</div>

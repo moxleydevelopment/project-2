@@ -73,13 +73,35 @@
 
  .info-3 {
     grid-row: 2/ span 1;
-     grid-column: 1 / span 1; 
+     grid-column: 1 / span 2;
+     width:  350px;
+    height: 110px;
+    overflow: scroll; 
+
  }
 
- .info-4 {
+ .link-edit{
+   padding-right: 100px; 
+   padding-top: 12px;
+}
+
+.comment-edit-form {
     grid-row: 2/ span 1;
-    grid-column: 2/ span 1;
- }
+     grid-column: 3 / span 1;
+}
+.edit-header{
+    grid-column: 1 / span 5;
+    font-size: 40px;
+    justify-self: center;
+}
+
+.comment-delete {
+    padding-right: 50px; 
+   padding-top: 12px;
+}
+
+
+ 
 
  .update-link {
      grid-column: 1/ span 2;
