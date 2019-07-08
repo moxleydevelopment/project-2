@@ -1,6 +1,6 @@
 <div class="content-container">
 
- <form class="edit-form" method="POST" action="/bartender/{{bartender._id}}?_method=PUT">
+    <form class="edit-form" method="POST" action="/bartender/{{bartender._id}}?_method=PUT">
         <div class="field">
             <label class="label">User Name</label>
             <div class="control">
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-         <div class="field">
+        <div class="field">
             <label class="label">Biography</label>
             <div class="control">
                 <textarea name="bio" class="textarea" placeholder="e.g. Hello world">{{bio}}</textarea>
@@ -49,10 +49,11 @@
 
         </div>
 
+
     </form>
-    
+    <form class="delete-form" method="POST" action="/bartender/{{bartender._id}}?_method=DELETE">
+        <input class="button btn-delete" type="submit" value="DELETE" />
+        <p class="help">WARNING!! Delete user profile</p>
+    </form>
+
 </div>
-
-
-
-

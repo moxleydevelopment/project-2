@@ -79,7 +79,7 @@ BartenderRouter.put('/:bartenderId', (req, res) => {
 BartenderRouter.delete('/:userId', (req, res) => {
   BartenderApi.deleteBartender(req.params.userId)
   .then(() =>{
-    res.redirect('/login/loginBar')
+    res.redirect('/bartender/login')
   })
 })
 
