@@ -21,6 +21,11 @@ BartenderRouter.get('/new', (req, res) => {
   res.render('bartender/newBartender')
 })
 
+BartenderRouter.get('/login', (req, res) => {
+  res.render('login/loginBar')
+})
+
+
 BartenderRouter.get('/:userName/edit', (req, res) => {
   BartenderApi.getBartender(req.params.userName)
     .then((bartender) => {
@@ -30,11 +35,11 @@ BartenderRouter.get('/:userName/edit', (req, res) => {
 
 
 BartenderRouter.get('/:userName', (req, res) => {
-  BartenderApi.getBartender(req.params.userName)
+  BartenderApi.getBartenderById(req.params.userName)
     .then((b) => {bartender = b})
-  CommentApi.getCommentsById(bartender._id)
+  CommentApi.getCommentsById(req.params.userName)
     .then((c) => {comments = c})
-  EventApi.getEventsById(bartender._Id)
+  EventApi.getEventsById(req.params.userName)
     .then((ev) => {
       events = ev
       res.render('bartender/bartender', { bartender, comments, events })
@@ -45,7 +50,7 @@ BartenderRouter.get('/:userName', (req, res) => {
 BartenderRouter.post('/', (req, res) => {
   BartenderApi.addNewBartender(req.body)
     .then(() => {
-      res.redirect('/login/')
+      res.redirect('/login/loginBar')
     })
 })
 

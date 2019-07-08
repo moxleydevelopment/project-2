@@ -24,6 +24,10 @@ const BartenderSchema = new mongoose.Schema({
     required: true
   },
 
+  email: String,
+
+  bio: String,
+
   rating: {
     type: Number,
     min: 1,

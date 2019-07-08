@@ -3,6 +3,7 @@ const express = require('express')
 
 
 const UserProfileApi = require('../models/userProfile.js')
+const BartenderApi = require('../models/bartender.js')
 
 
 
@@ -31,6 +32,28 @@ LoginRouter.post('/', (req , res) =>{
   })
   
 })
+
+LoginRouter.post('/bar', (req , res) =>{
+  console.log(req.body)
+  let user = req.body.userName
+  let pw = req.body.passWord
+  BartenderApi.getBartender(user)
+  .then((u) => {
+    userObject = u
+    if(!(pw == userObject.passWord)){
+      res.send("this is not you")
+    }else{
+     
+       res.redirect('../bartender/' + userObject._id)
+    }
+    
+  })
+  
+})
+
+
+
+
 
 /* Step 6
  *
