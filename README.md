@@ -11,6 +11,8 @@ into and view events that they are booked for.
 
 ##### Data Models
 
+![Wireframe](https://i.imgur.com/uSv8tP9.png)
+
 
 
 
