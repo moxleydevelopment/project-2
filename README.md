@@ -21,18 +21,18 @@ as the events that they will be working to see schedule availibility.
 #### Mock up of how the data will be presented visually 
 
 ###### User Login 
-[User login](https://i.imgur.com/vvYEdmG.png)
+![User login](https://i.imgur.com/vvYEdmG.png)
 
 
 ###### User Page 
-[User page](https://i.imgur.com/O56V2oq.png)
+![User page](https://i.imgur.com/O56V2oq.png)
 
 
 ###### Event Scheduler
-[Events](https://i.imgur.com/pnQnuxv.png)
+![Events](https://i.imgur.com/pnQnuxv.png)
 
 ###### New User
-[New User](https://i.imgur.com/CB7yard.png)
+![New User](https://i.imgur.com/CB7yard.png)
 
 
 
