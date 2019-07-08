@@ -27,7 +27,7 @@ BartenderRouter.get('/login', (req, res) => {
 
 
 BartenderRouter.get('/:userName/edit', (req, res) => {
-  BartenderApi.getBartender(req.params.userName)
+  BartenderApi.getBartenderById(req.params.userName)
     .then((bartender) => {
       res.render('bartender/editBartenderForm', { bartender })
     })
@@ -36,9 +36,9 @@ BartenderRouter.get('/:userName/edit', (req, res) => {
 
 BartenderRouter.get('/:userName', (req, res) => {
   BartenderApi.getBartenderById(req.params.userName)
-    .then((b) => {bartender = b})
+    .then((b) => { bartender = b })
   CommentApi.getCommentsById(req.params.userName)
-    .then((c) => {comments = c})
+    .then((c) => { comments = c })
   EventApi.getEventsById(req.params.userName)
     .then((ev) => {
       events = ev
@@ -56,17 +56,31 @@ BartenderRouter.post('/', (req, res) => {
 
 
 BartenderRouter.put('/:bartenderId', (req, res) => {
+  barId = req.params.bartenderId
   BartenderApi.updateBartender(req.params.bartenderId, req.body)
-    .then(BartenderApi.getBartender(req.params.userName))
-    .then((bartender) => {
-      res.render('bartender/bartender', { bartender })
+    .then(BartenderApi.getBartenderById(barId))
+    .then((b) => {
+      bartender = b
+      CommentApi.getCommentsById(barId)
+        .then((c) => {
+          comments = c
+          EventApi.getEventByBartender(barId)
+            .then((evt) => {
+              events = evt
+              res.render('bartender/bartender', { bartender, comments, events })
+            })
+        })
+
     })
 })
 
 
 
 BartenderRouter.delete('/:userId', (req, res) => {
-  res.send(BartenderApi.deleteBartender(req.params.userId))
+  BartenderApi.deleteBartender(req.params.userId)
+  .then(() =>{
+    res.redirect('/login/loginBar')
+  })
 })
 
 

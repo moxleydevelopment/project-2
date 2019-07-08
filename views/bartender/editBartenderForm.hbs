@@ -1,7 +1,58 @@
-<form method="POST" action="/bartender/{{bartender._id}}?_method=PUT">
-<input type="text" name="userName" id="userName" value="{{bartender.userName}}">
-<input type="password" name="passWord" id="passWord" value="{{bartender.passWord}}">
-<input type="text" name="firstName" id="firstName" value="{{bartender.firstName}}">
-<input type="text" name="lastName" id="lastName" value="{{bartender.lastName}}">
-<input type="submit" value="SUBMIT">
-</form>
+<div class="content-container">
+
+ <form class="edit-form" method="POST" action="/bartender/{{bartender._id}}?_method=PUT">
+        <div class="field">
+            <label class="label">User Name</label>
+            <div class="control">
+                <input class="input" type="text" name="userName" id="userName" value="{{bartender.userName}}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="password" name="passWord" id="passWord" value="{{bartender.passWord}}">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">First Name</label>
+            <div class="control">
+                <input class="input" type="text" name="firstName" id="firstName" value="{{bartender.firstName}}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Last Name</label>
+            <div class="control">
+                <input class="input" type="text" name="lastName" id="lastName" value="{{bartender.lastName}}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input" type="text" name="email" value="{{email}}">
+            </div>
+        </div>
+
+         <div class="field">
+            <label class="label">Biography</label>
+            <div class="control">
+                <textarea name="bio" class="textarea" placeholder="e.g. Hello world">{{bio}}</textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input class="button btn-color" type="submit" value="UPDATE">
+            </div>
+
+        </div>
+
+    </form>
+    
+</div>
+
+
+
+

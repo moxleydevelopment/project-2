@@ -1,21 +1,43 @@
 <div class="content-container">
-<h1>This for bartender  {{bartender.firstName}}</h1>
+   <h1 class="bar-header"> Hello!! {{bartender.firstName}} {{bartender.lastName}}, ready to start working?</h1>
+   <a href="/bartender/{{bartender._id}}/edit" class="bar-edit">UPDATE PROFILE</a>
+    <div class="info-bar">
+     <p>User Name: {{bartender.userName}}</p>
+     <p class="email">Email: {{bartender.email}}</p>
+     <p class="bar-bio">Bio: {{bartender.bio}}</p>
 
+    </div>
 
+   <div class="bar-comments">
+      {{#each comments}}
+      <div class="card">
+         <header class="card-header bg-header">
+            <p class="card-header-title">
+               {{author}}
+            </p>
+         </header>
+         <div class="card-content bg-content">
+            <div class="content">
+               Rating: {{rating}}
+               <br>
+               {{description}}
+            </div>
+         </div>
+      </div>
+      {{/each}}
+   </div>
+   <div class="bar-event-list">
+      <p class="event-header">Upcoming Events</p>
+      {{#each events}}
+      <ul class="unorder-event-list">
+         <li class="event-item">{{hostName}} is requesting you service to work a {{eventName}} at {{location}} on {{date}}; Details : {{description}}</li>
+      </ul>
+      {{/each}}
+   </div>
 </div>
 
 
 
-{{#each comments}}
-   <p>{{author}}</p>
-   <p>{{description}}</p>
-{{/each}}
 
 
-{{#each events}}
-   <p>{{hostName}}</p>
-   <p>{{eventName}}</p>
-   <p>{{location}}</p>
-   <p>{{description}}</p>
-{{/each}}
 
