@@ -49,8 +49,13 @@
 
  /* styling for the user display page*/
 
+ .logout {
+     grid-column: 5 / span 1;
+     grid-row: 1 / span 1;
+ }
+
  .user-welcome {
-     grid-column: 1 /span 5;
+     grid-column: 1 /span 4;
  }
 
  .userInfo {
@@ -59,6 +64,7 @@
      display: grid;
      grid-template-columns: repeat(2 ,1fr);
      grid-template-rows: repeat(2 , 1fr);
+     margin-left: 20px;
  }
 
 .info-1 {
@@ -107,6 +113,7 @@
      grid-column: 1/ span 2;
      grid-row: 5 / span 1;
      justify-self: center;
+     margin-right: 100px;
  }
  
  .bartender-info {
@@ -143,11 +150,14 @@
 .sb-title {
     grid-column: 1 / span 3;
     grid-row: 1 / span 1;
+    margin-left: 20px;
 }
 
 .heading-sub {
-    grid-column: 2 / span 2;
+    grid-column: 1 / span 1;
     grid-row: 2 / span 1;
+    justify-self: center;
+    font-weight: 700;
 }
 
 .bg-header {
@@ -163,6 +173,7 @@
     grid-row: 4/ span 2;
 
     background-color: #eee;
+    margin-left: 30px;
     
 }
 
@@ -172,6 +183,8 @@
     width:  270px;
     height: 210px;
     overflow: scroll;
+    margin-top: 40px;
+    margin-left: 40px;
 }
 
 .event-form {

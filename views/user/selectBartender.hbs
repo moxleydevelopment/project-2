@@ -1,8 +1,8 @@
 <div class="content-container">
-    <h1 class="title sb-title">{{user.firstName}}, {{bartender.firstName}} is your selected bartender </h1>
+    <h1 class="title sb-title"><a href="/user/{{user._id}}">{{user.firstName}}</a>, {{bartender.firstName}} is your selected bartender </h1>
 
 
-    <p class="heading-sub"></p>
+    <p class="heading-sub">Comments</p>
 
 
     <form class="comment-form" action="/comment" method="post">

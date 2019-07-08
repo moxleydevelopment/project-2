@@ -53,6 +53,7 @@ CommentRouter.get('/:barId', (req, res) => {
 })
 
 CommentRouter.put('/:id', (req, res) =>{
+  console.log(req.params.id)
   CommentApi.updateComment(req.params.id, req.body)
   .then((comment) =>{
     console.log(" this is the comment"+ comment)
