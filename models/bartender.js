@@ -60,8 +60,8 @@ function updateBartender(bartenderId, bartenderObject) {
 }
 
 
-function deleteBartender(userName) {
-  return BartenderCollection.findOneAndDelete(userName)
+function deleteBartender(id) {
+  return BartenderCollection.findById(id)
 }
 
 
