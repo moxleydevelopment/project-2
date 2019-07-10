@@ -61,7 +61,7 @@ function updateBartender(bartenderId, bartenderObject) {
 
 
 function deleteBartender(id) {
-  return BartenderCollection.findById(id)
+  return BartenderCollection.findByIdAndDelete(id)
 }
 
 
